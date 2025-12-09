@@ -50,6 +50,12 @@ npm test
 # Chạy tests với coverage
 npm run test:coverage
 
+# Mở HTML test report (dark theme)
+npm run test:report
+
+# Mở coverage report (line-by-line)
+npm run coverage:report
+
 # Watch mode
 npm run test:watch
 
@@ -59,7 +65,8 @@ npm run test:ci
 
 ### Test Coverage
 - **Minimum Coverage**: 70%
-- **Test Reports**: HTML reports được tạo trong thư mục `coverage/`
+- **HTML Test Report**: `coverage/test-report.html` (dark theme, test results)
+- **HTML Coverage Report**: `coverage/index.html` (line-by-line coverage)
 - **CI/CD**: Tự động chạy tests trên mỗi push và pull request
 
 ## 📱 Screenshots

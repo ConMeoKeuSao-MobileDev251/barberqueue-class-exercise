@@ -12,7 +12,9 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "test:ci": "jest --ci --coverage --maxWorkers=2"
+    "test:ci": "jest --ci --coverage --maxWorkers=2",
+    "test:report": "node scripts/view-report.js",
+    "coverage:report": "node scripts/view-report.js coverage"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.3",

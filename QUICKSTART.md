@@ -64,6 +64,7 @@ npm run test:watch
 ### New Files
 ```
 .github/workflows/test.yml  # CI/CD workflow
+scripts/view-report.js      # HTML report viewer
 TESTING.md                  # Setup guide
 COVERAGE.md                 # Coverage roadmap
 QUICKSTART.md              # This file
@@ -96,23 +97,31 @@ __tests__/HomeScreen.test.tsx        # 11 tests
 
 ## 🎨 HTML Reports
 
-### Test Report
-```
-coverage/test-report.html
-- Dark theme
-- Failure messages
-- Console logs
-- Status sorted
+### Quick Open Reports
+```bash
+# Open Test Report (dark theme with test results)
+npm run test:report
+
+# Open Coverage Report (detailed line-by-line)
+npm run coverage:report
 ```
 
-### Coverage Report
-```
-coverage/index.html
-- Line-by-line coverage
-- Branch coverage
-- File explorer
-- Visual indicators
-```
+### Test Report (test-report.html)
+- **Theme**: Dark theme 🌙
+- **Features**: 
+  - Test results with pass/fail status
+  - Failure messages and stack traces
+  - Console logs from tests
+  - Sorted by status (failures first)
+  - Execution time per test
+
+### Coverage Report (index.html)
+- **Features**:
+  - Line-by-line coverage
+  - Branch coverage visualization
+  - File explorer with coverage %
+  - Color-coded coverage indicators
+  - Uncovered line numbers
 
 ## 📝 Test Commands
 
@@ -123,6 +132,10 @@ npm run test:watch    # Watch mode
 
 # Coverage
 npm run test:coverage # Generate coverage report
+
+# View Reports (auto-open in browser)
+npm run test:report      # Open test report (dark theme)
+npm run coverage:report  # Open coverage report
 
 # CI
 npm run test:ci       # CI mode (coverage + max workers)
