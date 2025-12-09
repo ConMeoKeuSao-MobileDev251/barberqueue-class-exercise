@@ -41,3 +41,10 @@ app-example
 # generated native folders
 /ios
 /android
+
+# Test coverage
+coverage/
+*.lcov
+test-results/
+junit.xml
+test-report.html

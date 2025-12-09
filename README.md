@@ -1,5 +1,10 @@
 # BarberQueue 💇‍♂️
 
+![Tests CI](https://github.com/ConMeoKeuSao-MobileDev251/barberqueue-class-exercise/workflows/Tests%20CI/badge.svg)
+![Coverage](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/YOUR_USERNAME/YOUR_GIST_ID/raw/barberqueue-coverage.json)
+![Node Version](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen)
+![License](https://img.shields.io/badge/license-MIT-blue)
+
 **BarberQueue** là ứng dụng di động giúp khách hàng đặt lịch cắt tóc dễ dàng và hỗ trợ tiệm tóc quản lý lịch hẹn hiệu quả.
 
 ## 🎯 Tính năng chính
@@ -27,7 +32,7 @@
 
 ```bash
 # Clone repo
-git clone https://github.com/your-repo/barberqueue.git
+git clone https://github.com/ConMeoKeuSao-MobileDev251/barberqueue-class-exercise.git
 
 # Cài đặt dependencies
 npm install
@@ -35,6 +40,27 @@ npm install
 # Chạy ứng dụng
 npx expo start
 ```
+
+## 🧪 Testing
+
+```bash
+# Chạy tests
+npm test
+
+# Chạy tests với coverage
+npm run test:coverage
+
+# Watch mode
+npm run test:watch
+
+# CI mode
+npm run test:ci
+```
+
+### Test Coverage
+- **Minimum Coverage**: 70%
+- **Test Reports**: HTML reports được tạo trong thư mục `coverage/`
+- **CI/CD**: Tự động chạy tests trên mỗi push và pull request
 
 ## 📱 Screenshots
 
@@ -44,6 +70,7 @@ npx expo start
 - React Native
 - Expo
 - TypeScript
+- Jest & React Native Testing Library
 - Expo Router
 
 ## 📄 License

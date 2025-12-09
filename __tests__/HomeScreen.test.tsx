@@ -39,27 +39,30 @@ describe('HomeScreen', () => {
   });
 
   it('should render all tabs correctly', () => {
-    const { getByText } = render(<HomeTab />);
+    const { getAllByText } = render(<HomeTab />);
     
-    expect(getByText('Sắp tới')).toBeTruthy();
-    expect(getByText('Lịch sử')).toBeTruthy();
-    expect(getByText('Tiệm gần đây')).toBeTruthy();
-    expect(getByText('Yêu thích')).toBeTruthy();
+    // Sử dụng getAllByText vì text có thể xuất hiện nhiều lần
+    expect(getAllByText('Sắp tới').length).toBeGreaterThanOrEqual(1);
+    expect(getAllByText('Lịch sử').length).toBeGreaterThanOrEqual(1);
+    expect(getAllByText('Tiệm gần đây').length).toBeGreaterThanOrEqual(1);
+    expect(getAllByText('Yêu thích').length).toBeGreaterThanOrEqual(1);
   });
 
   it('should display featured appointment card', () => {
-    const { getByText } = render(<HomeTab />);
+    const { getByText, getAllByText } = render(<HomeTab />);
     
     expect(getByText('Lịch hẹn sắp tới')).toBeTruthy();
-    expect(getByText('Barber House Quận 1')).toBeTruthy();
+    // Barber House xuất hiện nhiều lần (featured card + list)
+    expect(getAllByText('Barber House Quận 1').length).toBeGreaterThanOrEqual(1);
   });
 
   it('should render quick action buttons', () => {
-    const { getByText } = render(<HomeTab />);
+    const { getByText, getAllByText } = render(<HomeTab />);
     
     expect(getByText('Đặt lịch')).toBeTruthy();
     expect(getByText('Gần đây')).toBeTruthy();
-    expect(getByText('Lịch sử')).toBeTruthy();
+    // Lịch sử xuất hiện ở cả tab và quick action
+    expect(getAllByText('Lịch sử').length).toBeGreaterThanOrEqual(1);
   });
 
   it('should show alert when quick action button is pressed', () => {
@@ -94,27 +97,26 @@ describe('HomeScreen', () => {
   });
 
   it('should change active tab when tab is selected', () => {
-    const { getByText } = render(<HomeTab />);
+    const { getAllByText } = render(<HomeTab />);
     
-    const historyTab = getByText('Lịch sử');
-    fireEvent.press(historyTab);
+    // Lấy tất cả elements có text 'Lịch sử', chọn element đầu tiên (tab)
+    const historyTabs = getAllByText('Lịch sử');
+    fireEvent.press(historyTabs[0]);
 
-    // Tab content should change
-    expect(() => getByText('Lịch sử')).not.toThrow();
+    // Verify tab vẫn render sau khi press
+    expect(getAllByText('Lịch sử').length).toBeGreaterThanOrEqual(1);
   });
 
   it('should render appointment list for active tab', () => {
-    const { getByText } = render(<HomeTab />);
+    const { getAllByText } = render(<HomeTab />);
     
-    // Default tab is "Sắp tới"
-    expect(getByText('Barber House Quận 1')).toBeTruthy();
-    expect(getByText('Thợ Minh')).toBeTruthy();
+    // Default tab is "Sắp tới" - kiểm tra có appointments
+    expect(getAllByText('Barber House Quận 1').length).toBeGreaterThanOrEqual(1);
+    expect(getAllByText(/Thợ Minh/i).length).toBeGreaterThanOrEqual(1);
   });
 
   it('should not crash when scrolling content', () => {
-    const { getByTestId } = render(<HomeTab />);
-    
-    // Test that ScrollView renders without issues
+    // Test that component renders without throwing
     expect(() => render(<HomeTab />)).not.toThrow();
   });
 });

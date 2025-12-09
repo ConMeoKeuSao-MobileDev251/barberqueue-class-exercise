@@ -8,12 +8,41 @@ module.exports = {
   transform: {
     '^.+\\.(js|ts|tsx)$': ['babel-jest', { presets: ['babel-preset-expo'] }],
   },
+  collectCoverage: false, // Enable with --coverage flag
   collectCoverageFrom: [
-    'src/**/*.{ts,tsx}',
-    '!src/**/*.d.ts',
-    '!src/**/__tests__/**',
+    'app/**/*.{js,jsx,ts,tsx}',
+    'components/**/*.{js,jsx,ts,tsx}',
+    'utils/**/*.{js,jsx,ts,tsx}',
+    'hooks/**/*.{js,jsx,ts,tsx}',
+    '!**/*.d.ts',
+    '!**/node_modules/**',
+    '!**/__tests__/**',
+    '!**/coverage/**',
   ],
-  coverageReporters: ['html', 'text', 'lcov'],
+  coverageThreshold: {
+    global: {
+      branches: 70,
+      functions: 70,
+      lines: 70,
+      statements: 70,
+    },
+  },
+  coverageReporters: ['text', 'lcov', 'html', 'json-summary'],
+  coverageDirectory: 'coverage',
+  reporters: [
+    'default',
+    [
+      'jest-html-reporter',
+      {
+        pageTitle: 'BarberQueue Test Report',
+        outputPath: 'coverage/test-report.html',
+        includeFailureMsg: true,
+        includeConsoleLog: true,
+        theme: 'darkTheme',
+        sort: 'status',
+      },
+    ],
+  ],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   testMatch: ['**/__tests__/**/*.test.(ts|tsx|js|jsx)'],
   moduleNameMapper: {
