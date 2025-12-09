@@ -16,7 +16,7 @@ const slides: Slide[] = [
   },
   {
     id: '2',
-    description: 'Tìm tiệm tóc gần bạn, xem đánh giá và lịch trống',
+    description: 'Tìm tiệm tóc gần bạn, xem đánh giá và lịch trống tiện lợi',
     image: require('@/assets/images/onboarding2.jpg'),
   },
   {
