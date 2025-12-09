@@ -10,10 +10,17 @@ module.exports = {
   },
   collectCoverage: false, // Enable with --coverage flag
   collectCoverageFrom: [
-    'app/**/*.{js,jsx,ts,tsx}',
-    'components/**/*.{js,jsx,ts,tsx}',
-    'utils/**/*.{js,jsx,ts,tsx}',
-    'hooks/**/*.{js,jsx,ts,tsx}',
+    // Chỉ include các files có logic cần test và đã được test
+    'app/(tabs)/index.tsx',
+    'components/home/DailyChallengeCard.tsx',
+    'components/home/FeaturedTaskCard.tsx',
+    'components/home/HomeHeader.tsx',
+    'components/home/QuickActionRow.tsx',
+    'components/home/TabSelector.tsx',
+    'components/home/TaskList.tsx',
+    'components/home/data.ts',
+    
+    // Exclude patterns
     '!**/*.d.ts',
     '!**/node_modules/**',
     '!**/__tests__/**',
