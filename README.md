@@ -1,9 +1,9 @@
 # BarberQueue 💇‍♂️
 
-![Tests CI](https://github.com/ConMeoKeuSao-MobileDev251/barberqueue-class-exercise/workflows/Tests%20CI/badge.svg)
-![Coverage](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/YOUR_USERNAME/YOUR_GIST_ID/raw/barberqueue-coverage.json)
+[![Tests CI](https://github.com/ConMeoKeuSao-MobileDev251/barberqueue-class-exercise/actions/workflows/test.yml/badge.svg)](https://github.com/ConMeoKeuSao-MobileDev251/barberqueue-class-exercise/actions/workflows/test.yml)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ConMeoKeuSao-MobileDev251_barberqueue-class-exercise&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=ConMeoKeuSao-MobileDev251_barberqueue-class-exercise)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=ConMeoKeuSao-MobileDev251_barberqueue-class-exercise&metric=coverage)](https://sonarcloud.io/summary/new_code?id=ConMeoKeuSao-MobileDev251_barberqueue-class-exercise)
 ![Node Version](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen)
-![License](https://img.shields.io/badge/license-MIT-blue)
 
 **BarberQueue** là ứng dụng di động giúp khách hàng đặt lịch cắt tóc dễ dàng và hỗ trợ tiệm tóc quản lý lịch hẹn hiệu quả.
 
