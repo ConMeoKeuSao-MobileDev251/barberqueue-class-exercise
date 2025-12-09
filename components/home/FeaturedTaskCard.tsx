@@ -1,32 +1,35 @@
-import React from 'react';
 import { Ionicons } from '@expo/vector-icons';
+import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import type { FeaturedTask } from './types';
+import type { FeaturedAppointment } from './types';
 
 type Props = {
-  task: FeaturedTask;
+  task: FeaturedAppointment;
 };
 
 export function FeaturedTaskCard({ task }: Props) {
   return (
     <View style={styles.card}>
       <View style={styles.header}>
-        <Text style={styles.subtitle}>{task.description}</Text>
-        <Ionicons name="star" size={18} color="#F7B500" />
+        <Text style={styles.subtitle}>Lịch hẹn sắp tới</Text>
+        <View style={styles.countdownBadge}>
+          <Ionicons name="time-outline" size={14} color="#FF6B35" />
+          <Text style={styles.countdownText}>{task.countdown}</Text>
+        </View>
       </View>
-      <Text style={styles.title}>{task.title}</Text>
+      <Text style={styles.title}>{task.shopName}</Text>
+      <View style={styles.metaRow}>
+        <Meta icon="person-outline" label={task.barberName} />
+        <Meta icon="cut-outline" label={task.service} />
+      </View>
       <View style={styles.metaRow}>
         <Meta icon="calendar-outline" label={task.date} />
-        <Meta icon="time-outline" label={task.duration} />
-        <Meta icon="cafe-outline" label={task.breakTime} />
+        <Meta icon="time-outline" label={task.time} />
       </View>
-      <View style={styles.progressRow}>
-        <Text style={styles.progressValue}>{task.progress}%</Text>
-        <Text style={styles.progressLabel}>Progress</Text>
-      </View>
-      <View style={styles.track}>
-        <View style={[styles.trackFill, { width: `${task.progress}%` }]} />
+      <View style={styles.addressRow}>
+        <Ionicons name="location-outline" size={16} color="#FF6B35" />
+        <Text style={styles.addressText}>{task.shopAddress}</Text>
       </View>
     </View>
   );
@@ -35,7 +38,7 @@ export function FeaturedTaskCard({ task }: Props) {
 function Meta({ icon, label }: { icon: React.ComponentProps<typeof Ionicons>['name']; label: string }) {
   return (
     <View style={styles.meta}>
-      <Ionicons name={icon} size={16} color="#7A7A7A" />
+      <Ionicons name={icon} size={16} color="#666666" />
       <Text style={styles.metaLabel}>{label}</Text>
     </View>
   );
@@ -46,11 +49,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderRadius: 24,
     padding: 20,
-    shadowColor: '#3C4F7C',
+    shadowColor: '#FF6B35',
     shadowOpacity: 0.12,
     shadowRadius: 20,
     shadowOffset: { width: 0, height: 12 },
     elevation: 6,
+    borderLeftWidth: 4,
+    borderLeftColor: '#FF6B35',
   },
   header: {
     flexDirection: 'row',
@@ -62,16 +67,30 @@ const styles = StyleSheet.create({
     color: '#8E8E93',
     fontSize: 14,
   },
+  countdownBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#FFF3E6',
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 12,
+    gap: 4,
+  },
+  countdownText: {
+    color: '#FF6B35',
+    fontSize: 12,
+    fontWeight: '600',
+  },
   title: {
     fontSize: 22,
     fontWeight: '700',
-    color: '#1B1B33',
+    color: '#1A1A1A',
     marginBottom: 12,
   },
   metaRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 16,
+    marginBottom: 8,
     flexWrap: 'wrap',
     gap: 8,
   },
@@ -81,33 +100,22 @@ const styles = StyleSheet.create({
     gap: 6,
   },
   metaLabel: {
-    color: '#7A7A7A',
+    color: '#666666',
     fontSize: 13,
   },
-  progressRow: {
+  addressRow: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'flex-end',
-  },
-  progressValue: {
-    fontSize: 16,
-    fontWeight: '700',
-    color: '#4361EE',
-  },
-  progressLabel: {
-    fontSize: 14,
-    color: '#A0A0B2',
-  },
-  track: {
-    height: 8,
-    borderRadius: 8,
-    backgroundColor: '#E6E9F6',
+    alignItems: 'center',
     marginTop: 8,
+    backgroundColor: '#FFF8F5',
+    padding: 10,
+    borderRadius: 12,
+    gap: 6,
   },
-  trackFill: {
-    height: 8,
-    borderRadius: 8,
-    backgroundColor: '#4361EE',
+  addressText: {
+    color: '#666666',
+    fontSize: 12,
+    flex: 1,
   },
 });
 

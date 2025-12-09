@@ -1,5 +1,5 @@
-import React from 'react';
 import { Feather } from '@expo/vector-icons';
+import React from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import type { QuickAction } from './types';
@@ -7,6 +7,15 @@ import type { QuickAction } from './types';
 type Props = {
   actions: QuickAction[];
   onActionPress?: (action: QuickAction) => void;
+};
+
+const iconMap: Record<QuickAction['icon'], React.ComponentProps<typeof Feather>['name']> = {
+  'scissors': 'scissors',
+  'map-pin': 'map-pin',
+  'calendar': 'calendar',
+  'star': 'star',
+  'clock': 'clock',
+  'search': 'search',
 };
 
 export function QuickActionRow({ actions, onActionPress }: Props) {
@@ -17,9 +26,9 @@ export function QuickActionRow({ actions, onActionPress }: Props) {
           key={action.id}
           style={[styles.card, { backgroundColor: action.accent }]}
           onPress={() => onActionPress?.(action)}
-          android_ripple={{ color: '#000', borderless: false }}>
+          android_ripple={{ color: '#FF6B35', borderless: false }}>
           <View style={styles.icon}>
-            <Feather name={action.icon} size={18} color="#272742" />
+            <Feather name={iconMap[action.icon]} size={18} color="#FF6B35" />
           </View>
             <Text style={styles.label}>{action.label}</Text>
         </Pressable>
@@ -46,15 +55,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 8,
-    shadowColor: '#000',
-    shadowOpacity: 0.08,
+    shadowColor: '#FF6B35',
+    shadowOpacity: 0.15,
     shadowRadius: 6,
     shadowOffset: { width: 0, height: 3 },
     elevation: 4,
   },
   label: {
     fontWeight: '600',
-    color: '#272742',
+    color: '#1A1A1A',
   },
 });
 

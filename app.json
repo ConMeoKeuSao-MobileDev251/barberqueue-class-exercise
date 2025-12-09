@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "onboarding-home",
-    "slug": "onboarding-home",
+    "name": "BarberQueue",
+    "slug": "barberqueue",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "onboardinghome",
+    "scheme": "barberqueue",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
@@ -13,7 +13,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
+        "backgroundColor": "#FF6B35",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
         "backgroundImage": "./assets/images/android-icon-background.png",
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
@@ -45,7 +45,16 @@
       "reactCompiler": true
     },
     "runtimeVersion": {
-      "policy": "sdkVersion"  
+      "policy": "sdkVersion"
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "1aecdcae-f6c3-462d-848b-90be5acf0807"
+      }
+    },
+    "updates": {
+      "url": "https://u.expo.dev/1aecdcae-f6c3-462d-848b-90be5acf0807"
     }
   }
 }

@@ -5,26 +5,53 @@
 
 import { Platform } from 'react-native';
 
-const tintColorLight = '#0a7ea4';
-const tintColorDark = '#fff';
+// BarberQueue Theme Colors - Cam, Đen, Trắng
+const primaryOrange = '#FF6B35';
+const secondaryOrange = '#F7931E';
+const darkColor = '#1A1A1A';
+const lightOrange = '#FFF3E6';
 
 export const Colors = {
   light: {
-    text: '#11181C',
-    background: '#fff',
-    tint: tintColorLight,
-    icon: '#687076',
-    tabIconDefault: '#687076',
-    tabIconSelected: tintColorLight,
+    text: '#1A1A1A',
+    background: '#FFFFFF',
+    tint: primaryOrange,
+    icon: '#666666',
+    tabIconDefault: '#999999',
+    tabIconSelected: primaryOrange,
+    primary: primaryOrange,
+    secondary: secondaryOrange,
+    accent: lightOrange,
+    card: '#FFFFFF',
+    border: '#EEEEEE',
   },
   dark: {
-    text: '#ECEDEE',
-    background: '#151718',
-    tint: tintColorDark,
-    icon: '#9BA1A6',
-    tabIconDefault: '#9BA1A6',
-    tabIconSelected: tintColorDark,
+    text: '#FFFFFF',
+    background: '#1A1A1A',
+    tint: primaryOrange,
+    icon: '#BBBBBB',
+    tabIconDefault: '#888888',
+    tabIconSelected: primaryOrange,
+    primary: primaryOrange,
+    secondary: secondaryOrange,
+    accent: '#2D2D2D',
+    card: '#2D2D2D',
+    border: '#333333',
   },
+};
+
+// BarberQueue Brand Colors
+export const BrandColors = {
+  orange: primaryOrange,
+  orangeLight: secondaryOrange,
+  orangeBg: lightOrange,
+  black: darkColor,
+  white: '#FFFFFF',
+  gray: '#666666',
+  grayLight: '#F5F5F5',
+  success: '#4CAF50',
+  warning: '#FFC107',
+  error: '#F44336',
 };
 
 export const Fonts = Platform.select({

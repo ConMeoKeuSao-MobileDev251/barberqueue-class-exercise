@@ -1,6 +1,6 @@
-import React from 'react';
-import { View, Animated, useWindowDimensions, StyleSheet } from 'react-native';
 import { Slide } from '@/types/slide';
+import React from 'react';
+import { Animated, StyleSheet, useWindowDimensions, View } from 'react-native';
 
 const Paginator = ({
   data,
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
   dot: {
     height: 8,
     borderRadius: 4,
-    backgroundColor: '#333',
+    backgroundColor: '#FF6B35',
     marginHorizontal: 4,
   },
 })

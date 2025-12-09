@@ -1,27 +1,27 @@
-import { Alert, Image, Pressable, StyleSheet, Text, View } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import React from 'react';
+import { Alert, Image, Pressable, StyleSheet, Text, View } from 'react-native';
 
 type Props = {
   userName: string;
 };
 
 export function HomeHeader({ userName }: Props) {
-  const handleSearch = () => Alert.alert('Search', 'Opening search…');
-  const handleBell = () => Alert.alert('Reminders', 'All caught up for now!');
+  const handleSearch = () => Alert.alert('Tìm kiếm', 'Đang mở tìm kiếm tiệm tóc…');
+  const handleBell = () => Alert.alert('Thông báo', 'Bạn có 1 lịch hẹn sắp tới!');
 
   return (
     <View style={styles.header}>
       <View style={styles.profile}>
         <Image source={require('@/assets/images/onboarding1.png')} style={styles.avatar} />
         <View>
-          <Text style={styles.subtitle}>Welcome</Text>
+          <Text style={styles.subtitle}>Xin chào,</Text>
           <Text style={styles.title}>{userName}</Text>
         </View>
       </View>
       <View style={styles.actions}>
-        <IconButton icon={<Feather name="search" size={20} color="#1E1E2C" />} onPress={handleSearch} />
-        <IconButton icon={<Feather name="bell" size={20} color="#1E1E2C" />} onPress={handleBell} />
+        <IconButton icon={<Feather name="search" size={20} color="#FF6B35" />} onPress={handleSearch} />
+        <IconButton icon={<Feather name="bell" size={20} color="#FF6B35" />} onPress={handleBell} />
       </View>
     </View>
   );
@@ -75,8 +75,8 @@ const styles = StyleSheet.create({
     height: 40,
     borderRadius: 12,
     borderWidth: 1,
-    borderColor: '#ECECF5',
-    backgroundColor: '#fff',
+    borderColor: '#FFE4D6',
+    backgroundColor: '#FFF8F5',
     alignItems: 'center',
     justifyContent: 'center',
   },

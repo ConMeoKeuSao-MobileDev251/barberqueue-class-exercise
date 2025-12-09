@@ -1,27 +1,27 @@
-import { StyleSheet, Text, View, FlatList, Animated, TouchableOpacity } from 'react-native';
-import React, { useState, useRef } from 'react';
 import { useRouter } from 'expo-router';
+import React, { useRef, useState } from 'react';
+import { Animated, FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-import Paginator from '@/components/onboarding/paginator';
-import OnboardingItem from '@/components/onboarding/onboarding-item';
 import NextButton from '@/components/onboarding/next-button';
-import { completeOnboarding } from '@/utils/onboarding';
+import OnboardingItem from '@/components/onboarding/onboarding-item';
+import Paginator from '@/components/onboarding/paginator';
 import { Slide } from '@/types/slide';
+import { completeOnboarding } from '@/utils/onboarding';
 
 const slides: Slide[] = [
   {
     id: '1',
-    description: 'Manage your study, work, and life in one place',
+    description: 'Đặt lịch cắt tóc nhanh chóng, không cần chờ đợi',
     image: require('@/assets/images/onboarding1.png'),
   },
   {
     id: '2',
-    description: 'All-in-One: Tasks, Scheduling, Notes, and Well-Being',
+    description: 'Tìm tiệm tóc gần bạn, xem đánh giá và lịch trống',
     image: require('@/assets/images/onboarding2.jpg'),
   },
   {
     id: '3',
-    description: 'Achieve More Together with Efficient Team Task Management',
+    description: 'Nhận thông báo nhắc lịch, không bao giờ bỏ lỡ',
     image: require('@/assets/images/onboarding3.jpg'),
   },
 ];
@@ -71,7 +71,7 @@ const Onboarding = () => {
       >
         <Text style={styles.skipText}>Skip</Text>
       </TouchableOpacity>
-      <Text style={styles.title}>DineLex</Text>
+      <Text style={styles.title}>BarberQueue</Text>
       <View style={{ flex: 0.9 }}>
         <FlatList
           data={slides}
@@ -116,6 +116,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     marginVertical: 12,
+    color: '#FF6B35',
   },
   skipButton: {
     position: 'absolute',
@@ -125,11 +126,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 6,
     borderRadius: 8,
-    backgroundColor: 'rgba(0, 0, 0, 0.05)', 
+    backgroundColor: 'rgba(255, 107, 53, 0.1)', 
   },
   skipText: {
     fontSize: 16,
     fontWeight: '600',
-    color: '#666',
+    color: '#FF6B35',
   },
 });

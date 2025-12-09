@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text } from 'react-native';
 
 import type { HomeTab, HomeTabId } from './types';
 
@@ -48,8 +48,8 @@ const styles = StyleSheet.create({
     borderColor: '#E7E7F1',
   },
   activeChip: {
-    backgroundColor: '#E4EBFF',
-    borderColor: '#C0D4FF',
+    backgroundColor: '#FFF3E6',
+    borderColor: '#FFD4B8',
   },
   chipLabel: {
     fontSize: 14,
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
   activeLabel: {
-    color: '#4361EE',
+    color: '#FF6B35',
   },
 });
 

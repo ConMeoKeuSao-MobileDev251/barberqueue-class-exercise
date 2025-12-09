@@ -1,10 +1,10 @@
-import React from 'react';
 import { Feather } from '@expo/vector-icons';
+import React from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
-import type { Challenge } from './types';
+import type { Promotion } from './types';
 
-type Props = Challenge & {
+type Props = Promotion & {
   onDismiss?: () => void;
   onAction?: () => void;
 };
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
   card: {
     borderRadius: 24,
     padding: 20,
-    backgroundColor: '#8EC5FC',
+    backgroundColor: '#FF6B35',
   },
   header: {
     flexDirection: 'row',
@@ -44,16 +44,17 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
   body: {
-    color: '#f7f8ff',
+    color: '#FFF8F5',
     fontSize: 14,
     marginBottom: 16,
+    lineHeight: 20,
   },
   button: {
     alignSelf: 'flex-start',
     paddingHorizontal: 18,
     paddingVertical: 8,
     borderRadius: 999,
-    backgroundColor: '#5A8DEE',
+    backgroundColor: '#1A1A1A',
   },
   buttonLabel: {
     color: '#fff',

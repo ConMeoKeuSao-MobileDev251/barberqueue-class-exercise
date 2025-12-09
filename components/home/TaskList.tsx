@@ -1,46 +1,64 @@
-import React from 'react';
 import { Feather } from '@expo/vector-icons';
+import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import type { Task } from './types';
+import type { Appointment } from './types';
 
 type Props = {
   title: string;
-  tasks: Task[];
+  tasks: Appointment[];
   onViewAll?: () => void;
 };
 
 export function TaskList({ title, tasks, onViewAll }: Props) {
+  const getStatusColor = (status: Appointment['status']) => {
+    switch (status) {
+      case 'confirmed': return '#4CAF50';
+      case 'pending': return '#FFC107';
+      case 'completed': return '#9E9E9E';
+      case 'cancelled': return '#F44336';
+      default: return '#9E9E9E';
+    }
+  };
+
+  const getStatusText = (status: Appointment['status']) => {
+    switch (status) {
+      case 'confirmed': return 'Đã xác nhận';
+      case 'pending': return 'Chờ xác nhận';
+      case 'completed': return 'Hoàn thành';
+      case 'cancelled': return 'Đã hủy';
+      default: return '';
+    }
+  };
+
   return (
     <View style={styles.wrapper}>
       <View style={styles.header}>
         <Text style={styles.title}>{title}</Text>
         <Text style={styles.link} onPress={onViewAll}>
-          View All
+          Xem tất cả
         </Text>
       </View>
       <View style={styles.list}>
         {tasks.map(task => (
           <View key={task.id} style={styles.item}>
-            <View
-              style={[
-                styles.checkbox,
-                task.completed ? styles.checkboxCompleted : styles.checkboxPending,
-              ]}>
-              {task.completed ? <Feather name="check" size={12} color="#fff" /> : null}
-            </View>
+            <View style={[styles.statusDot, { backgroundColor: getStatusColor(task.status) }]} />
             <View style={styles.itemContent}>
               <View style={styles.itemTitleRow}>
-                <Text style={styles.itemTitle}>{task.title}</Text>
-                {task.tag ? (
-                  <View style={[styles.tag, { backgroundColor: task.tagColor ?? '#EAEAEA' }]}>
-                    <Text style={styles.tagLabel}>{task.tag}</Text>
-                  </View>
-                ) : null}
+                <Text style={styles.itemTitle}>{task.shopName}</Text>
+                <Text style={styles.priceTag}>{task.price}</Text>
               </View>
-              <Text style={styles.itemTime}>{task.time}</Text>
+              <Text style={styles.barberName}>{task.barberName} • {task.service}</Text>
+              <View style={styles.itemFooter}>
+                <Text style={styles.itemTime}>{task.date} - {task.time}</Text>
+                <View style={[styles.statusBadge, { backgroundColor: `${getStatusColor(task.status)}20` }]}>
+                  <Text style={[styles.statusText, { color: getStatusColor(task.status) }]}>
+                    {getStatusText(task.status)}
+                  </Text>
+                </View>
+              </View>
             </View>
-            <Feather name="more-horizontal" size={18} color="#A8A6AD" />
+            <Feather name="chevron-right" size={18} color="#A8A6AD" />
           </View>
         ))}
       </View>
@@ -60,10 +78,10 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     fontWeight: '700',
-    color: '#1B1B33',
+    color: '#1A1A1A',
   },
   link: {
-    color: '#6C63FF',
+    color: '#FF6B35',
     fontWeight: '600',
   },
   list: {
@@ -72,27 +90,21 @@ const styles = StyleSheet.create({
   item: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 12,
+    paddingVertical: 14,
     paddingHorizontal: 16,
     backgroundColor: '#fff',
     borderRadius: 18,
     gap: 12,
+    shadowColor: '#000',
+    shadowOpacity: 0.05,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 2 },
+    elevation: 2,
   },
-  checkbox: {
-    width: 26,
-    height: 26,
-    borderRadius: 12,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: 1,
-  },
-  checkboxCompleted: {
-    backgroundColor: '#6C63FF',
-    borderColor: '#6C63FF',
-  },
-  checkboxPending: {
-    borderColor: '#D0D0DA',
-    backgroundColor: '#F7F7FB',
+  statusDot: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
   },
   itemContent: {
     flex: 1,
@@ -102,27 +114,40 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     marginBottom: 4,
-    gap: 8,
   },
   itemTitle: {
     fontSize: 16,
     fontWeight: '600',
-    color: '#1B1B33',
+    color: '#1A1A1A',
     flex: 1,
   },
-  tag: {
-    borderRadius: 8,
-    paddingHorizontal: 8,
-    paddingVertical: 2,
+  priceTag: {
+    fontSize: 14,
+    fontWeight: '700',
+    color: '#FF6B35',
   },
-  tagLabel: {
-    fontSize: 12,
-    fontWeight: '600',
-    color: '#2B2B43',
+  barberName: {
+    fontSize: 13,
+    color: '#666666',
+    marginBottom: 6,
+  },
+  itemFooter: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
   itemTime: {
-    fontSize: 13,
+    fontSize: 12,
     color: '#8E8E93',
+  },
+  statusBadge: {
+    paddingHorizontal: 8,
+    paddingVertical: 2,
+    borderRadius: 8,
+  },
+  statusText: {
+    fontSize: 10,
+    fontWeight: '600',
   },
 });
 

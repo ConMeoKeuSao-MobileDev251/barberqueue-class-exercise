@@ -1,12 +1,12 @@
-import React from 'react';
-import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { Feather } from '@expo/vector-icons';
+import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
+import React from 'react';
 import { Alert, Pressable, StyleSheet, View } from 'react-native';
 
 const iconMap: Record<string, React.ComponentProps<typeof Feather>['name']> = {
   index: 'home',
   calendar: 'calendar',
-  tasks: 'check-square',
+  tasks: 'scissors',
   profile: 'user',
 };
 
@@ -39,12 +39,12 @@ export function HomeTabBar({ state, descriptors, navigation }: BottomTabBarProps
               testID={options.tabBarTestID}
               style={[styles.tabButton, isFocused && styles.tabButtonActive]}
               onPress={onPress}>
-              <Feather name={icon} size={22} color={isFocused ? '#6C63FF' : '#8E90A2'} />
+              <Feather name={icon} size={22} color={isFocused ? '#FF6B35' : '#8E90A2'} />
             </Pressable>
           );
         })}
       </View>
-      <Pressable style={styles.fab} onPress={() => Alert.alert('Create', 'Add a new task.')}>
+      <Pressable style={styles.fab} onPress={() => Alert.alert('Đặt lịch', 'Mở màn hình đặt lịch cắt tóc mới.')}>
         <Feather name="plus" size={28} color="#fff" />
       </Pressable>
     </View>
@@ -86,10 +86,10 @@ const styles = StyleSheet.create({
     width: 64,
     height: 64,
     borderRadius: 32,
-    backgroundColor: '#6C63FF',
+    backgroundColor: '#FF6B35',
     alignItems: 'center',
     justifyContent: 'center',
-    shadowColor: '#6C63FF',
+    shadowColor: '#FF6B35',
     shadowOpacity: 0.35,
     shadowRadius: 16,
     shadowOffset: { width: 0, height: 8 },

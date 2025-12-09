@@ -1,7 +1,7 @@
-import React, { useEffect, useRef } from 'react';
-import { StyleSheet, TouchableOpacity, View, Animated } from 'react-native';
-import Svg, { Circle, G } from 'react-native-svg';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import React, { useEffect, useRef } from 'react';
+import { Animated, StyleSheet, TouchableOpacity, View } from 'react-native';
+import Svg, { Circle, G } from 'react-native-svg';
 
 const AnimatedCircle = Animated.createAnimatedComponent(Circle);
 
@@ -50,7 +50,7 @@ const NextButton = ({
 
           {/* Vòng progress animated */}
           <AnimatedCircle
-            stroke="#333"
+            stroke="#FF6B35"
             fill="none"
             cx={center}
             cy={center}
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     width: 72,
     height: 72,
     borderRadius: 36,
-    backgroundColor: '#333',
+    backgroundColor: '#FF6B35',
     justifyContent: 'center',
     alignItems: 'center',
     elevation: 5, 

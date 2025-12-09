@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { Alert, ScrollView, StyleSheet, TouchableOpacity, Text } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
+import React, { useState } from 'react';
+import { Alert, ScrollView, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { DailyChallengeCard } from '@/components/home/DailyChallengeCard';
 import { FeaturedTaskCard } from '@/components/home/FeaturedTaskCard';
@@ -15,7 +15,7 @@ import { resetOnboarding } from '@/utils/onboarding';
 
 
 export default function HomeTab() {
-  const [activeTab, setActiveTab] = useState<HomeTabId>('inProgress');
+  const [activeTab, setActiveTab] = useState<HomeTabId>('upcoming');
   const router = useRouter();
 
   const handleResetOnboarding = async () => {
@@ -31,22 +31,34 @@ export default function HomeTab() {
   return (
     <SafeAreaView style={styles.safeArea}>
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
-        <HomeHeader userName="Đăng Khoa" />
+        <HomeHeader userName="Khách hàng" />
         <TabSelector tabs={homeTabs} activeTab={activeTab} onChange={setActiveTab} />
         <FeaturedTaskCard task={featuredTask} />
         <QuickActionRow
           actions={quickActions}
-          onActionPress={() => Alert.alert('Action', 'Feature coming soon in the next sprint.')}
+          onActionPress={(action) => {
+            switch(action.id) {
+              case 'book':
+                Alert.alert('Đặt lịch', 'Chuyển đến màn hình đặt lịch cắt tóc.');
+                break;
+              case 'nearby':
+                Alert.alert('Tiệm gần đây', 'Đang tìm các tiệm tóc xung quanh bạn...');
+                break;
+              case 'history':
+                Alert.alert('Lịch sử', 'Xem lịch sử các lần đặt lịch của bạn.');
+                break;
+            }
+          }}
         />
         <DailyChallengeCard
           {...challenge}
-          onAction={() => Alert.alert('Nice!', 'Daily challenge completed.')}
-          onDismiss={() => Alert.alert('Hidden', 'Challenge dismissed for now.')}
+          onAction={() => Alert.alert('Đặt lịch ngay!', 'Chuyển đến màn hình tìm tiệm tóc.')}
+          onDismiss={() => Alert.alert('Đã ẩn', 'Ưu đãi sẽ được ẩn tạm thời.')}
         />
         <TaskList
-          title={homeTabs.find(tab => tab.id === activeTab)?.label ?? 'Tasks'}
+          title={homeTabs.find(tab => tab.id === activeTab)?.label ?? 'Lịch hẹn'}
           tasks={tasksByTab[activeTab]}
-          onViewAll={() => Alert.alert('See more', 'Navigate to the dedicated list.')}
+          onViewAll={() => Alert.alert('Xem thêm', 'Chuyển đến danh sách đầy đủ.')}
         />
         <TouchableOpacity style={styles.testButton} onPress={handleResetOnboarding}>
           <Text style={styles.testButtonText}>Test lại Onboarding</Text>
@@ -59,7 +71,7 @@ export default function HomeTab() {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: '#f5f6fb',
+    backgroundColor: '#FFF8F5',
   },
   content: {
     paddingHorizontal: 20,
@@ -70,7 +82,7 @@ const styles = StyleSheet.create({
     marginTop: 12,
     paddingVertical: 14,
     borderRadius: 16,
-    backgroundColor: '#6C63FF',
+    backgroundColor: '#FF6B35',
     alignItems: 'center',
   },
   testButtonText: {

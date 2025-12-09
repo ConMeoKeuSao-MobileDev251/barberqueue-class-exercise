@@ -1,110 +1,149 @@
-import type { Challenge, FeaturedTask, HomeTab, HomeTabId, QuickAction, Task } from './types';
+import type { Appointment, FeaturedAppointment, HomeTab, HomeTabId, Promotion, QuickAction } from './types';
 
+// BarberQueue Home Tabs
 export const homeTabs: HomeTab[] = [
-  { id: 'inProgress', label: 'In Progress' },
-  { id: 'weekly', label: 'Weekly Task' },
-  { id: 'daily', label: 'Daily Task' },
-  { id: 'team', label: 'Team Task' },
+  { id: 'upcoming', label: 'Sắp tới' },
+  { id: 'history', label: 'Lịch sử' },
+  { id: 'shops', label: 'Tiệm gần đây' },
+  { id: 'favorites', label: 'Yêu thích' },
 ];
 
-export const featuredTask: FeaturedTask = {
-  title: 'Design for dashboard project management',
-  description: 'Morning Task',
-  date: 'Oct 10, 2025',
-  duration: '4 Hours',
-  breakTime: '20 min break',
-  progress: 80,
+// Featured/Next Appointment
+export const featuredTask: FeaturedAppointment = {
+  shopName: 'Barber House Quận 1',
+  barberName: 'Thợ Minh',
+  service: 'Cắt tóc + Gội đầu',
+  date: '25/11/2025',
+  time: '14:00',
+  countdown: 'Còn 2 giờ',
+  shopAddress: '123 Nguyễn Huệ, Quận 1, TP.HCM',
 };
 
-export const challenge: Challenge = {
-  title: 'Daily Challenge',
-  description: "Today’s challenge: Complete your top 3 tasks to start the day strong!",
-  ctaLabel: 'Done',
+// Promotion Banner
+export const challenge: Promotion = {
+  title: '🎉 Ưu đãi đặc biệt',
+  description: 'Giảm 20% cho lần đặt lịch đầu tiên! Sử dụng mã BARBER20 khi thanh toán.',
+  ctaLabel: 'Đặt ngay',
+  discount: '20%',
 };
 
+// Quick Actions for BarberQueue
 export const quickActions: QuickAction[] = [
-  { id: 'schedule', label: 'Schedule', icon: 'calendar', accent: '#FFE1E0' },
-  { id: 'bookmark', label: 'Bookmark', icon: 'bookmark', accent: '#E1F0FF' },
-  { id: 'team', label: 'Team Sync', icon: 'users', accent: '#E8E1FF' },
+  { id: 'book', label: 'Đặt lịch', icon: 'scissors', accent: '#FFF3E6' },
+  { id: 'nearby', label: 'Gần đây', icon: 'map-pin', accent: '#FFE4D6' },
+  { id: 'history', label: 'Lịch sử', icon: 'clock', accent: '#FFF0E0' },
 ];
 
-const createTask = (partial: Task): Task => partial;
+const createAppointment = (partial: Appointment): Appointment => partial;
 
-export const tasksByTab: Record<HomeTabId, Task[]> = {
-  inProgress: [
-    createTask({
-      id: 'ip-1',
-      title: 'Wireframe for E commerce',
-      time: '10:00AM – 12:00AM',
-      completed: false,
-      tag: 'UI',
-      tagColor: '#FECACA',
+// Appointments by tab
+export const tasksByTab: Record<HomeTabId, Appointment[]> = {
+  upcoming: [
+    createAppointment({
+      id: 'up-1',
+      shopName: 'Barber House Quận 1',
+      barberName: 'Thợ Minh',
+      service: 'Cắt tóc + Gội đầu',
+      date: '25/11/2025',
+      time: '14:00',
+      status: 'confirmed',
+      price: '150.000đ',
     }),
-    createTask({
-      id: 'ip-2',
-      title: 'High Fidelity for onboarding feature',
-      time: '01:00PM – 03:30PM',
-      completed: false,
-      tag: 'UX',
-      tagColor: '#C7D2FE',
-    }),
-  ],
-  weekly: [
-    createTask({
-      id: 'wk-1',
-      title: 'Sprint planning deck',
-      time: 'Tuesday · 02:00PM',
-      tag: 'Planning',
-      tagColor: '#D1FAE5',
-    }),
-    createTask({
-      id: 'wk-2',
-      title: 'Partner review sync',
-      time: 'Thursday · 09:30AM',
-      tag: 'Meeting',
-      tagColor: '#FCD34D',
+    createAppointment({
+      id: 'up-2',
+      shopName: 'The Gentlemen Barber',
+      barberName: 'Thợ Hùng',
+      service: 'Cắt tóc + Cạo râu',
+      date: '28/11/2025',
+      time: '10:30',
+      status: 'pending',
+      price: '200.000đ',
     }),
   ],
-  daily: [
-    createTask({
-      id: 'dy-1',
-      title: 'Customer feedback digest',
-      time: '08:30AM – 09:00AM',
-      completed: true,
-      tag: 'Research',
-      tagColor: '#FBCFE8',
+  history: [
+    createAppointment({
+      id: 'his-1',
+      shopName: 'Barber House Quận 1',
+      barberName: 'Thợ Minh',
+      service: 'Cắt tóc',
+      date: '15/11/2025',
+      time: '09:00',
+      status: 'completed',
+      price: '100.000đ',
     }),
-    createTask({
-      id: 'dy-2',
-      title: 'Team standup',
-      time: '09:15AM – 09:30AM',
-      completed: true,
-      tag: 'Team',
-      tagColor: '#BBF7D0',
+    createAppointment({
+      id: 'his-2',
+      shopName: 'Classic Cut Studio',
+      barberName: 'Thợ Nam',
+      service: 'Nhuộm tóc',
+      date: '10/11/2025',
+      time: '15:00',
+      status: 'completed',
+      price: '350.000đ',
     }),
-    createTask({
-      id: 'dy-3',
-      title: 'Design QA with engineers',
-      time: '04:00PM – 05:00PM',
-      completed: false,
-      tag: 'QA',
-      tagColor: '#FEEBC8',
+    createAppointment({
+      id: 'his-3',
+      shopName: 'Modern Hair Salon',
+      barberName: 'Thợ Tuấn',
+      service: 'Uốn tóc',
+      date: '05/11/2025',
+      time: '11:00',
+      status: 'completed',
+      price: '400.000đ',
     }),
   ],
-  team: [
-    createTask({
-      id: 'tm-1',
-      title: 'Retro board prep',
-      time: 'Tomorrow · 11:00AM',
-      tag: 'Team',
-      tagColor: '#E0F2FE',
+  shops: [
+    createAppointment({
+      id: 'shop-1',
+      shopName: 'Barber House Quận 1',
+      barberName: '5 thợ',
+      service: 'Cắt, Nhuộm, Uốn',
+      date: '0.5 km',
+      time: '⭐ 4.8 (120)',
+      status: 'confirmed',
+      price: 'Từ 80.000đ',
     }),
-    createTask({
-      id: 'tm-2',
-      title: 'Hiring sync',
-      time: 'Friday · 04:00PM',
-      tag: 'Ops',
-      tagColor: '#FDE68A',
+    createAppointment({
+      id: 'shop-2',
+      shopName: 'The Gentlemen Barber',
+      barberName: '3 thợ',
+      service: 'Cắt, Cạo râu, Massage',
+      date: '1.2 km',
+      time: '⭐ 4.9 (85)',
+      status: 'confirmed',
+      price: 'Từ 120.000đ',
+    }),
+    createAppointment({
+      id: 'shop-3',
+      shopName: 'Classic Cut Studio',
+      barberName: '4 thợ',
+      service: 'Cắt, Nhuộm, Tạo kiểu',
+      date: '2.0 km',
+      time: '⭐ 4.7 (200)',
+      status: 'confirmed',
+      price: 'Từ 100.000đ',
+    }),
+  ],
+  favorites: [
+    createAppointment({
+      id: 'fav-1',
+      shopName: 'Barber House Quận 1',
+      barberName: 'Thợ Minh',
+      service: 'Thợ yêu thích',
+      date: '⭐ 4.9',
+      time: 'Đã phục vụ 5 lần',
+      status: 'confirmed',
+      price: '100.000đ',
+    }),
+    createAppointment({
+      id: 'fav-2',
+      shopName: 'The Gentlemen Barber',
+      barberName: 'Thợ Hùng',
+      service: 'Tiệm yêu thích',
+      date: '⭐ 4.8',
+      time: 'Đã phục vụ 3 lần',
+      status: 'confirmed',
+      price: '150.000đ',
     }),
   ],
 };
